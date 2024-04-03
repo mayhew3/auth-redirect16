@@ -19,8 +19,18 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
       domain: 'mayhew3.auth0.com',
       clientId: 'HY2lTrNdFc6HDrTlSoKZNL0EriSi0dnW',
       authorizationParams: {
-        redirect_uri: window.location.origin
-      }
+        audience: 'https://media-mogul-two.herokuapp.com',
+        redirect_uri: window.location.origin,
+        scope: 'profile email offline_access',
+      },
+      useRefreshTokens: true,
+      cacheLocation: 'localstorage',
+      leeway: 80,
+
+      // Specify configuration for the interceptor
+      httpInterceptor: {
+        allowedList: ['/api/*'],
+      },
     }),
   ],
   bootstrap: [AppComponent]
